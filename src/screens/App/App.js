@@ -38,21 +38,20 @@ export default function App() {
     getPosts();
   }, []);
 
-  const renderPost = ( {item} ) =>(
-        <Card style={{padding:10, margin:15}}>
-          <Card.Title
-            title={item.title}
-            // left={LeftContent}
-          />
-          <Card.Content>
-            <Paragraph>{item.body}</Paragraph>
-          </Card.Content>
-          <Card.Actions>
-            <Button>Cancel</Button>
-            <Button>Ok</Button>
-          </Card.Actions>
-        </Card>
-  )
+  const renderPost = ({ item }) => (
+    <Card style={{ padding: 10, margin: 15 }}>
+      <Card.Cover
+        source={{ uri: "https://picsum.photos/seed/" + item.id + "/200/300" }}
+      />
+      <Card.Title title={item.title} />
+      <Card.Content>
+        <Paragraph>{item.body}</Paragraph>
+      </Card.Content>
+      <Card.Actions>
+        <Button mode="contained">Read More</Button>
+      </Card.Actions>
+    </Card>
+  );
 
   const navigation = useNavigation();
   const [postsLoaded, setPostsLoaded] = useState(false);
