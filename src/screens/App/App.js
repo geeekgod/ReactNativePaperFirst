@@ -39,16 +39,23 @@ export default function App() {
   }, []);
 
   const renderPost = ({ item }) => (
-    <Card style={{ padding: 10, margin: 15 }}>
+    <Card
+      style={{ padding: 10, margin: 15, borderWidth: 0, elevation: 0 }}
+    >
       <Card.Cover
-        source={{ uri: "https://picsum.photos/seed/" + item.id + "/200/300" }}
+        source={{ uri: "https://picsum.photos/seed/" + item.id + "/700" }}
       />
       <Card.Title title={item.title} />
       <Card.Content>
         <Paragraph>{item.body}</Paragraph>
       </Card.Content>
       <Card.Actions>
-        <Button mode="contained" onPress={() => navigation.navigate("Post Details", item)}>Read More</Button>
+        <Button
+          mode="contained"
+          onPress={() => navigation.navigate("Post Details", item)}
+        >
+          Read More
+        </Button>
       </Card.Actions>
     </Card>
   );
@@ -58,15 +65,11 @@ export default function App() {
   if (postsLoaded) {
     return (
       <View style={styles.container}>
-        <Text>Home Screen</Text>
-        <Button mode="contained" onPress={() => navigation.navigate("Details")}>
-          Go to details
-        </Button>
         {post && (
           <FlatList
             data={post}
             renderItem={renderPost}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.id.toString()}
           />
         )}
       </View>

@@ -1,12 +1,14 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import { Button } from 'react-native-paper';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { Button } from "react-native-paper";
 
-export default function AboutScreen({navigation}) {
+export default function AboutScreen({ navigation }) {
   return (
     <View style={style.container}>
       <Text>About Screen</Text>
-      <Button mode="contained" onPress={() => navigation.popToTop()}>Go Back to Home</Button>
+      <Button mode="contained" onPress={() => navigation.popToTop()}>
+        Go Back to Home
+      </Button>
     </View>
   );
 }
@@ -14,7 +16,7 @@ export default function AboutScreen({navigation}) {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
