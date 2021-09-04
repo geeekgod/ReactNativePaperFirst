@@ -1,18 +1,19 @@
 import * as React from "react";
 import { Appbar } from "react-native-paper";
 import { Dimensions, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 
-const AppBar = () => {
-  const _goBack = () => console.log("Went back");
-
+const AppBar = ({ navigation, previous, route }) => {
   const _handleSearch = () => console.log("Searching");
 
   const _handleMore = () => console.log("Shown more");
-
+  console.log(route);
   return (
     <Appbar.Header style={styles.header}>
-      <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="Title" subtitle="Subtitle" />
+      {route.name == "Home" ? null : (
+        <Appbar.BackAction onPress={navigation.goBack} />
+      )}
+      <Appbar.Content title={route.name} subtitle="Subtitle" />
       <Appbar.Action icon="magnify" onPress={_handleSearch} />
       <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
     </Appbar.Header>

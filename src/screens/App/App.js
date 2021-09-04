@@ -17,7 +17,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Home Screen</Text>
-      <AppBar/>
       <Button mode="contained" onPress={() => navigation.navigate("Details")}>
         Go to details
       </Button>
