@@ -6,6 +6,7 @@ import App from "../screens/App/App";
 import DetailsScreen from "../screens/Details/Details";
 import AppBar from '../components/AppBar'
 import AboutScreen from "../screens/About/About";
+import PostDetails from "../screens/PostDetails/PostDetails";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ export default function MainStack() {
         <Stack.Screen name="Home" component={App} />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="About" component={AboutScreen} />
+        <Stack.Screen name="Post Details" component={PostDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );

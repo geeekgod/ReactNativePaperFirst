@@ -13,8 +13,8 @@ const AppBar = ({ navigation, previous, route }) => {
       {route.name == "Home" ? null : (
         <Appbar.BackAction onPress={navigation.goBack} />
       )}
-      <Appbar.Content title={route.name} subtitle="Subtitle" />
-      <Appbar.Action icon="magnify" onPress={_handleSearch} />
+      <Appbar.Content title={route.name} />
+      {/* <Appbar.Action icon="magnify" onPress={_handleSearch} /> */}
       <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
     </Appbar.Header>
   );

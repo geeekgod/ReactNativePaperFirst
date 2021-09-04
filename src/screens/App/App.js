@@ -48,7 +48,7 @@ export default function App() {
         <Paragraph>{item.body}</Paragraph>
       </Card.Content>
       <Card.Actions>
-        <Button mode="contained">Read More</Button>
+        <Button mode="contained" onPress={() => navigation.navigate("Post Details", item)}>Read More</Button>
       </Card.Actions>
     </Card>
   );
