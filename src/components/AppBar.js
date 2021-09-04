@@ -10,14 +10,12 @@ const AppBar = () => {
   const _handleMore = () => console.log("Shown more");
 
   return (
-    // <Appbar style={styles.bottom}>
     <Appbar.Header style={styles.header}>
       <Appbar.BackAction onPress={_goBack} />
       <Appbar.Content title="Title" subtitle="Subtitle" />
       <Appbar.Action icon="magnify" onPress={_handleSearch} />
       <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
     </Appbar.Header>
-    // </Appbar>
   );
 };
 
