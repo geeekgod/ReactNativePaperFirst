@@ -7,10 +7,14 @@ export default function DetailsScreen() {
   const navigation = useNavigation();
   return (
     <View style={style.container}>
-      <Text>Details Screen</Text>
-      <Button mode="contained" onPress={() => navigation.navigate("About")}>
-        Go to About Us
-      </Button>
+      <View style={style.textView}>
+        <Text>Nothing Special for Details Yet</Text>
+      </View>
+      <View style={style.buttonContainer}>
+        <Button mode="contained" onPress={() => navigation.navigate("About")}>
+          Go to About Us
+        </Button>
+      </View>
     </View>
   );
 }
@@ -20,5 +24,13 @@ const style = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  buttonContainer: {
+    marginHorizontal: 20,
+    marginVertical: 10,
+  },
+  textView: {
+    marginHorizontal: 20,
+    marginVertical: 10,
   },
 });

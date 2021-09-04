@@ -1,21 +1,51 @@
 import * as React from "react";
-import { Appbar } from "react-native-paper";
-import { Dimensions, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/core";
+import { Appbar, Menu, Snackbar } from "react-native-paper";
+import { Dimensions, StyleSheet, View } from "react-native";
+import { useEffect } from "react";
+// import { useNavigation } from "@react-navigation/core";
 
-const AppBar = ({ navigation, previous, route }) => {
-  const _handleSearch = () => console.log("Searching");
+const AppBar = ({ navigation, route }) => {
+  const [visible, setVisible] = React.useState(false);
+  const openMenu = () => setVisible(true);
+  const closeMenu = () => setVisible(false);
 
-  const _handleMore = () => console.log("Shown more");
   console.log(route);
+
+  useEffect(() => {
+    closeMenu();
+  }, []);
   return (
     <Appbar.Header style={styles.header}>
       {route.name == "Home" ? null : (
         <Appbar.BackAction onPress={navigation.goBack} />
       )}
       <Appbar.Content title={route.name} />
-      {/* <Appbar.Action icon="magnify" onPress={_handleSearch} /> */}
-      <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
+      <Menu
+        visible={visible}
+        onDismiss={closeMenu}
+        anchor={
+          <Appbar.Action
+            icon="dots-vertical"
+            color="white"
+            onPress={openMenu}
+            onDismiss={closeMenu}
+          />
+        }
+      >
+        <Menu.Item
+          onPress={() => {
+            navigation.navigate("About");
+          }}
+          title="About Us"
+        />
+        <Menu.Item
+          onPress={() => {
+            navigation.navigate("Details");
+          }}
+          title="Details Of Our App"
+        />
+          <Menu.Item title="My Profile" disabled />
+      </Menu>
     </Appbar.Header>
   );
 };
