@@ -12,7 +12,6 @@ const Stack = createStackNavigator();
 
 export default function MainStack() {
   return (
-    <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
@@ -24,6 +23,5 @@ export default function MainStack() {
         <Stack.Screen name="About" component={AboutScreen} />
         <Stack.Screen name="Post Details" component={PostDetails} />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 }

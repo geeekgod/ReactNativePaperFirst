@@ -5,6 +5,7 @@ import { applyMiddleware } from "redux";
 import { createStore } from "redux";
 import thunk from "redux-thunk";
 import MainStack from "./src/navigation/MainStack";
+import MyTabs from "./src/navigation/TopTab";
 import { RootReducer } from "./src/redux/reducers/rootReducer";
 import App from "./src/screens/App/App";
 
@@ -21,7 +22,8 @@ export default function Main() {
   return (
     <Provider store={store}>
       <PaperProvider theme={theme}>
-        <MainStack />
+        {/* <MainStack /> */}
+        <MyTabs/>
       </PaperProvider>
     </Provider>
   );

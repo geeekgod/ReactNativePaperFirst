@@ -62,7 +62,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
             horizontal
           />
         )}
-        {userImgs && (
+        {/* {userImgs && (
           <FlatList
             style={{
               marginVertical: 10,
@@ -71,7 +71,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
             renderItem={renderAvtar}
             horizontal
           />
-        )}
+        )} */}
       </View>
     );
   } else {
