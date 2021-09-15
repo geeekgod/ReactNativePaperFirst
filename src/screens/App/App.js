@@ -45,6 +45,7 @@ export default function App() {
             data={post}
             renderItem={renderPost}
             keyExtractor={(item) => item.id.toString()}
+            horizontal
           />
         )}
       </View>

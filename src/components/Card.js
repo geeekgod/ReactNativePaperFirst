@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/core";
 import * as React from "react";
-import { View } from "react-native";
+import { Dimensions, View } from "react-native";
 import { Button, Card, Paragraph } from "react-native-paper";
 
 const CustomCard = ({ item, pageType }) => {
@@ -10,6 +10,7 @@ const CustomCard = ({ item, pageType }) => {
       case "home":
         return (
           <Button
+            style={{ marginTop: 10, borderRadius: 8, elevation: 0 }}
             mode="contained"
             onPress={() => navigation.navigate("Post Details", item)}
           >
@@ -20,7 +21,7 @@ const CustomCard = ({ item, pageType }) => {
         return (
           <Button
             icon="home"
-            style={{ marginTop: 10 }}
+            style={{ marginTop: 10, borderRadius: 8, elevation: 0 }}
             mode="contained"
             onPress={() => navigation.popToTop()}
           >
@@ -36,6 +37,7 @@ const CustomCard = ({ item, pageType }) => {
         margin: 15,
         borderWidth: 0,
         maxHeight: 290,
+        maxWidth: Dimensions.get("screen").width - 35,
         elevation: 0,
         borderRadius: 20,
       }}
@@ -66,6 +68,7 @@ const CustomCard = ({ item, pageType }) => {
             height: "100%",
             display: "flex",
             alignItems: "flex-end",
+            overflow: "hidden",
           }}
         >
           <Card.Title title={item.title} numberOfLines={3} />
