@@ -1,12 +1,14 @@
 import { useNavigation } from "@react-navigation/core";
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import AppLoading from "expo-app-loading";
 import CustomCard from "../../components/Card";
+import { connect, ReactReduxContext, useSelector } from "react-redux";
+import { loadPost } from "../../redux/actions/actionConstructor";
 
-export default function App() {
+function App({userLoadPost}) {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -27,15 +29,20 @@ export default function App() {
     }
   };
 
+  const { store } = useContext(ReactReduxContext);
+  console.log(store);
+
   useEffect(() => {
     getPosts();
+    userLoadPost()
   }, []);
+  const state = useSelector((state) => {
+    if (state) return state;
+  });
+  console.log(state);
 
-  const renderPost = ({ item }) => (
-    <CustomCard item={item} pageType="home" />
-  );
+  const renderPost = ({ item }) => <CustomCard item={item} pageType="home" />;
 
-  const navigation = useNavigation();
   const [postsLoaded, setPostsLoaded] = useState(false);
   if (postsLoaded) {
     return (
@@ -53,10 +60,24 @@ export default function App() {
   } else {
     return (
       <AppLoading
-        startAsync={getPosts}
+        startAsync={userLoadPost}
         onFinish={() => setPostsLoaded(true)}
         onError={console.warn}
       />
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    userPosts: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userLoadPost: () => dispatch(loadPost()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

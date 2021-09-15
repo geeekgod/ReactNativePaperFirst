@@ -1,7 +1,12 @@
-import * as React from 'react';
-import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import MainStack from './src/navigation/MainStack';
-import App from './src/screens/App/App';
+import * as React from "react";
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
+import { Provider } from "react-redux";
+import { applyMiddleware } from "redux";
+import { createStore } from "redux";
+import thunk from "redux-thunk";
+import MainStack from "./src/navigation/MainStack";
+import { RootReducer } from "./src/redux/reducers/rootReducer";
+import App from "./src/screens/App/App";
 
 const theme = {
   ...DefaultTheme,
@@ -10,10 +15,14 @@ const theme = {
   },
 };
 
+const store = createStore(RootReducer, applyMiddleware(thunk));
+
 export default function Main() {
   return (
-    <PaperProvider theme={theme}>
-      <MainStack/>
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider theme={theme}>
+        <MainStack />
+      </PaperProvider>
+    </Provider>
   );
 }
