@@ -8,8 +8,10 @@ import CustomCard from "../../components/Card";
 import { connect, ReactReduxContext, useSelector } from "react-redux";
 import { loadImgAvatar, loadPost } from "../../redux/actions/actionConstructor";
 import { Avatar } from "react-native-paper";
+import { useTheme } from "@react-navigation/native";
 
 function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
+  const theme = useTheme();
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -20,19 +22,25 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
 
   const { store } = useContext(ReactReduxContext);
 
-  // useEffect(() => {
-  //   userLoadPost();
-  //   userLoadImage();
-  // }, []);
   const state = useSelector((state) => {
     if (state) return state;
   });
   const renderPost = ({ item }) => <CustomCard item={item} pageType="home" />;
   const renderAvtar = ({ item }) => (
-    <Avatar.Image
-      size={74}
-      source={{ uri: userImgs.results[0].picture.medium }}
-    />
+    <View
+      style={{
+        marginHorizontal: 5,
+        borderWidth: 5,
+        borderColor: theme.colors.primary,
+        height: 84,
+        borderRadius: 84 / 2,
+      }}
+    >
+      <Avatar.Image
+        size={74}
+        source={{ uri: userImgs.results[0].picture.large }}
+      />
+    </View>
   );
 
   const [postsLoaded, setPostsLoaded] = useState(false);
@@ -41,7 +49,9 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
       <View style={styles.container}>
         {state.posts && (
           <FlatList
-            style={{ backgroundColor: "black" }}
+            style={{
+              marginVertical: 10,
+            }}
             data={state.posts}
             renderItem={renderPost}
             keyExtractor={(item) => item.id.toString()}
@@ -50,6 +60,9 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
         )}
         {userImgs && (
           <FlatList
+            style={{
+              marginVertical: 10,
+            }}
             data={userImgs.results[0].picture.medium}
             renderItem={renderAvtar}
             horizontal
