@@ -1,6 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initState = {
+  users: [],
   posts: [],
 };
 
@@ -14,6 +15,17 @@ export const RootReducer = (state = initState, action) => {
       };
     case actionTypes.LOAD_POST_FAILURE:
       console.log("LOAD POST ERROR", action.payload);
+
+    case actionTypes.LOAD_IMAGE_AVATAR_SUCCESS:
+      let newUsers = action.payload;
+      console.log(newUsers);
+      return {
+        ...state,
+        users: newUsers,
+      };
+    case actionTypes.LOAD_IMAGE_AVATAR_FAILURE:
+      console.log("LOAD IMAGES ERROR", action.payload);
   }
+
   return state;
 };
