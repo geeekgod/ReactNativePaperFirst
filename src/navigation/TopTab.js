@@ -1,5 +1,5 @@
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useTheme } from "@react-navigation/native";
 import React from "react";
 import { Text, View } from "react-native";
 import App from "../screens/App/App";
@@ -16,12 +16,25 @@ const Test = () => {
 };
 
 function TopBar() {
+  const theme = useTheme();
+  console.log(theme);
   return (
-      <Tab.Navigator initialRouteName="Cooking">
-        <Tab.Screen name="Cooking" component={App} />
-        <Tab.Screen name="Baking" component={App} />
-        <Tab.Screen name="Drinks" component={App} />
-      </Tab.Navigator>
+    <Tab.Navigator
+      initialRouteName="Cooking"
+      screenOptions={{
+        tabBarIndicatorStyle: {
+          backgroundColor: theme.colors.primary,
+          height: 1,
+        },
+        tabBarStyle: {
+          elevation: 0,
+        },
+      }}
+    >
+      <Tab.Screen name="Cooking" component={App} />
+      <Tab.Screen name="Baking" component={App} />
+      <Tab.Screen name="Drinks" component={App} />
+    </Tab.Navigator>
   );
 }
 export default TopBar;

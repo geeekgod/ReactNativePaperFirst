@@ -21,10 +21,16 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
   });
 
   const { store } = useContext(ReactReduxContext);
-  useEffect(() => {
+  // useEffect(() => {
+  //   userLoadPost();
+  //   userLoadImage();
+  // }, []);
+
+  const loadData = async () => {
     userLoadPost();
     userLoadImage();
-  }, []);
+  };
+
   const state = useSelector((state) => {
     if (state) return state;
   });
@@ -77,7 +83,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
   } else {
     return (
       <AppLoading
-        startAsync={(userLoadPost, userLoadImage)}
+        startAsync={loadData}
         onFinish={() => setPostsLoaded(true)}
         onError={console.warn}
       />
