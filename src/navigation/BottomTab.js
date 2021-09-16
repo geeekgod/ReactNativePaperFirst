@@ -7,9 +7,9 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 const Tab = createMaterialBottomTabNavigator();
 
-const SettingsScreen = () => {
+const SearchScreen = () => {
   return (
-    <View>
+    <View style={{ flex: 1, alignItems: "center" }}>
       <Text>Settings Screen</Text>
     </View>
   );
@@ -29,13 +29,29 @@ function BottomTab() {
         <Tab.Screen
           options={{
             tabBarIcon: () => (
-              <MaterialCommunityIcons name="compass" color={theme.colors.primary} size={25} />
+              <MaterialCommunityIcons
+                name="compass"
+                color={theme.colors.primary}
+                size={25}
+              />
             ),
           }}
           name="Voyage"
           component={MainStack}
         />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen
+          options={{
+            tabBarIcon: () => (
+              <MaterialCommunityIcons
+                name="magnify"
+                color={theme.colors.primary}
+                size={25}
+              />
+            ),
+          }}
+          name="Search"
+          component={SearchScreen}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
