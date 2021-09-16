@@ -83,7 +83,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
               horizontal
             />
           )}
-          {userImgs && (
+          {/* {userImgs && (
             <FlatList
               style={{
                 paddingVertical: 5,
@@ -92,17 +92,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
               renderItem={renderAvtar}
               horizontal
             />
-          )}
-          {userImgs && (
-            <FlatList
-              style={{
-                paddingVertical: 5,
-              }}
-              data={userImgs.results[0].picture.large}
-              renderItem={renderAvtar}
-              horizontal
-            />
-          )}
+          )} */}
         </ScrollView>
       </View>
     );

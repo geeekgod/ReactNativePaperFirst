@@ -6,6 +6,7 @@ import { createStore } from "redux";
 import thunk from "redux-thunk";
 import MainStack from "./src/navigation/MainStack";
 import { RootReducer } from "./src/redux/reducers/rootReducer";
+import BottomTab from "./src/navigation/BottomTab";
 
 const theme = {
   ...DefaultTheme,
@@ -20,7 +21,8 @@ export default function Main() {
   return (
     <Provider store={store}>
       <PaperProvider theme={theme}>
-        <MainStack />
+        {/* <MainStack /> */}
+        <BottomTab />
       </PaperProvider>
     </Provider>
   );
