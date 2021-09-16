@@ -2,6 +2,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { Text, View } from "react-native";
+import App from "../screens/App/App";
 import MainStack from "./MainStack";
 
 const Tab = createMaterialTopTabNavigator();
@@ -14,14 +15,13 @@ const Test = () => {
   );
 };
 
-function MyTabs() {
+function TopBar() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator initialRouteName="Feed">
-        <Tab.Screen name="Feed" component={MainStack} />
-        <Tab.Screen name="Test" component={Test} />
+      <Tab.Navigator initialRouteName="Cooking">
+        <Tab.Screen name="Cooking" component={App} />
+        <Tab.Screen name="Baking" component={App} />
+        <Tab.Screen name="Drinks" component={App} />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 }
-export default MyTabs;
+export default TopBar;
