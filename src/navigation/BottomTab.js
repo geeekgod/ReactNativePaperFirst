@@ -36,20 +36,18 @@ function BottomTab() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        activeColor={theme.colors.primary}
         initialRouteName="Voyage"
         barStyle={{
           backgroundColor: theme.colors.background,
           height: 55,
+          elevation: 0,
         }}
       >
         <Tab.Screen
           options={{
-            tabBarIcon: () => (
-              <MaterialCommunityIcons
-                name="compass"
-                color={theme.colors.primary}
-                size={25}
-              />
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="compass" color={color} size={25} />
             ),
           }}
           name="Voyage"
@@ -57,12 +55,8 @@ function BottomTab() {
         />
         <Tab.Screen
           options={{
-            tabBarIcon: () => (
-              <MaterialCommunityIcons
-                name="magnify"
-                color={theme.colors.primary}
-                size={25}
-              />
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="magnify" color={color} size={25} />
             ),
           }}
           name="Explore"
@@ -71,12 +65,8 @@ function BottomTab() {
 
         <Tab.Screen
           options={{
-            tabBarIcon: () => (
-              <MaterialCommunityIcons
-                name="bookmark"
-                color={theme.colors.primary}
-                size={25}
-              />
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="bookmark" color={color} size={25} />
             ),
           }}
           name="Favourites"
@@ -85,12 +75,8 @@ function BottomTab() {
 
         <Tab.Screen
           options={{
-            tabBarIcon: () => (
-              <MaterialCommunityIcons
-                name="cart"
-                color={theme.colors.primary}
-                size={25}
-              />
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="cart" color={color} size={25} />
             ),
           }}
           name="Pantry"
