@@ -24,9 +24,9 @@ function TopBar() {
       screenOptions={{
         tabBarIndicatorStyle: {
           backgroundColor: theme.colors.primary,
-          height: 1,
         },
         tabBarStyle: {
+          backgroundColor: theme.colors.background,
           elevation: 0,
         },
       }}

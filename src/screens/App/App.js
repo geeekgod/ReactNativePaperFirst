@@ -2,7 +2,14 @@ import { useNavigation } from "@react-navigation/core";
 import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  Dimensions,
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import AppLoading from "expo-app-loading";
 import CustomCard from "../../components/Card";
 import { connect, ReactReduxContext, useSelector } from "react-redux";
@@ -14,6 +21,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
   const theme = useTheme();
   const styles = StyleSheet.create({
     container: {
+      display: "flex",
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
@@ -21,11 +29,6 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
   });
 
   const { store } = useContext(ReactReduxContext);
-  // useEffect(() => {
-  //   userLoadPost();
-  //   userLoadImage();
-  // }, []);
-
   const loadData = async () => {
     userLoadPost();
     userLoadImage();
@@ -57,27 +60,50 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
   if (postsLoaded) {
     return (
       <View style={styles.container}>
-        {state.posts && (
-          <FlatList
-            style={{
-              marginVertical: 10,
-            }}
-            data={state.posts}
-            renderItem={renderPost}
-            keyExtractor={(item) => item.id.toString()}
-            horizontal
-          />
-        )}
-        {/* {userImgs && (
-          <FlatList
-            style={{
-              marginVertical: 10,
-            }}
-            data={userImgs.results[0].picture.large}
-            renderItem={renderAvtar}
-            horizontal
-          />
-        )} */}
+        <ScrollView>
+          {state.posts && (
+            <FlatList
+              style={{
+                paddingVertical: 5,
+              }}
+              data={state.posts}
+              renderItem={renderPost}
+              keyExtractor={(item) => item.id.toString()}
+              horizontal
+            />
+          )}
+          {state.posts && (
+            <FlatList
+              style={{
+                paddingVertical: 5,
+              }}
+              data={state.posts}
+              renderItem={renderPost}
+              keyExtractor={(item) => item.id.toString()}
+              horizontal
+            />
+          )}
+          {userImgs && (
+            <FlatList
+              style={{
+                paddingVertical: 5,
+              }}
+              data={userImgs.results[0].picture.large}
+              renderItem={renderAvtar}
+              horizontal
+            />
+          )}
+          {userImgs && (
+            <FlatList
+              style={{
+                paddingVertical: 5,
+              }}
+              data={userImgs.results[0].picture.large}
+              renderItem={renderAvtar}
+              horizontal
+            />
+          )}
+        </ScrollView>
       </View>
     );
   } else {
