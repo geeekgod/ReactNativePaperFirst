@@ -21,7 +21,10 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
   });
 
   const { store } = useContext(ReactReduxContext);
-
+  useEffect(() => {
+    userLoadPost();
+    userLoadImage();
+  }, []);
   const state = useSelector((state) => {
     if (state) return state;
   });
@@ -39,6 +42,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
       <Avatar.Image
         size={74}
         source={{ uri: userImgs.results[0].picture.large }}
+        key={Math.random().toString()}
       />
     </View>
   );
@@ -58,16 +62,16 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
             horizontal
           />
         )}
-        {userImgs && (
+        {/* {userImgs && (
           <FlatList
             style={{
               marginVertical: 10,
             }}
-            data={userImgs.results[0].picture.medium}
+            data={userImgs.results[0].picture.large}
             renderItem={renderAvtar}
             horizontal
           />
-        )}
+        )} */}
       </View>
     );
   } else {
