@@ -15,6 +15,22 @@ const SearchScreen = () => {
   );
 };
 
+const FavouritesScreen = () => {
+  return (
+    <View style={{ flex: 1, alignItems: "center" }}>
+      <Text>Favourites Screen</Text>
+    </View>
+  );
+};
+
+const PantryScreen = () => {
+  return (
+    <View style={{ flex: 1, alignItems: "center" }}>
+      <Text>Pantry Screen</Text>
+    </View>
+  );
+};
+
 function BottomTab() {
   const theme = useTheme();
   return (
@@ -23,7 +39,7 @@ function BottomTab() {
         initialRouteName="Voyage"
         barStyle={{
           backgroundColor: theme.colors.background,
-          height: 70,
+          height: 55,
         }}
       >
         <Tab.Screen
@@ -49,8 +65,36 @@ function BottomTab() {
               />
             ),
           }}
-          name="Search"
+          name="Explore"
           component={SearchScreen}
+        />
+
+        <Tab.Screen
+          options={{
+            tabBarIcon: () => (
+              <MaterialCommunityIcons
+                name="bookmark"
+                color={theme.colors.primary}
+                size={25}
+              />
+            ),
+          }}
+          name="Favourites"
+          component={FavouritesScreen}
+        />
+
+        <Tab.Screen
+          options={{
+            tabBarIcon: () => (
+              <MaterialCommunityIcons
+                name="cart"
+                color={theme.colors.primary}
+                size={25}
+              />
+            ),
+          }}
+          name="Pantry"
+          component={PantryScreen}
         />
       </Tab.Navigator>
     </NavigationContainer>
