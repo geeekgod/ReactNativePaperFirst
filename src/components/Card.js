@@ -10,7 +10,19 @@ const CustomCard = ({ item, pageType }) => {
       case "home":
         return (
           <Button
-            style={{ marginTop: 10, borderRadius: 8, elevation: 0 }}
+            style={{
+              marginTop: 10,
+              borderRadius: 8,
+              elevation: 2, // display: "flex",
+              // maxWidth: "429px",
+              // height: "53px",
+              // width: "429px",
+              width: 130,
+              borderRadius: 32,
+              shadowOpacity: 5,
+              // boxShadow: "0px 4px 26px 0px rgba(0, 0, 0, 0.25)",
+              backgroundColor: "rgba(193, 12, 153, 1)",
+            }}
             mode="contained"
             onPress={() => navigation.navigate("Post Details", item)}
           >
@@ -21,7 +33,11 @@ const CustomCard = ({ item, pageType }) => {
         return (
           <Button
             icon="home"
-            style={{ marginTop: 10, borderRadius: 8, elevation: 0 }}
+            style={{
+              marginTop: 10,
+              borderRadius: 8,
+              elevation: 0,
+            }}
             mode="contained"
             onPress={() => navigation.popToTop()}
           >
