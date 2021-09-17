@@ -61,3 +61,10 @@ export const loadImgAvatar = () => {
       });
   };
 };
+
+export const addToSave = (id) => {
+  return {
+    type: actionTypes.ADD_TO_SAVE,
+    payload: id,
+  };
+};

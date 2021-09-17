@@ -25,6 +25,21 @@ export const RootReducer = (state = initState, action) => {
       };
     case actionTypes.LOAD_IMAGE_AVATAR_FAILURE:
       console.log("LOAD IMAGES ERROR", action.payload);
+
+    case actionTypes.ADD_TO_SAVE:
+      let saveId = action.payload;
+      let newPost1 = state.posts.map((item) => {
+        if (
+          item.id === saveId &&
+          (item.saved === true || item.saved === false)
+        ) {
+          item.saved = !item.saved;
+        }
+      });
+      return {
+        ...state,
+        posts: newPost1,
+      };
   }
 
   return state;
