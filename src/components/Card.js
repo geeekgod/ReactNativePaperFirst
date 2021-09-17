@@ -1,9 +1,17 @@
 import { useNavigation } from "@react-navigation/core";
+import { useTheme } from "@react-navigation/native";
 import * as React from "react";
 import { Dimensions, View } from "react-native";
-import { Button, Card, Paragraph } from "react-native-paper";
+import {
+  Button,
+  Card,
+  Divider,
+  IconButton,
+  Paragraph,
+} from "react-native-paper";
 
 const CustomCard = ({ item, pageType }) => {
+  const theme = useTheme();
   const navigation = useNavigation();
   const buttonOnType = () => {
     switch (pageType) {
@@ -59,6 +67,13 @@ const CustomCard = ({ item, pageType }) => {
       }}
     >
       <View style={{ display: "flex", flexDirection: "row", height: "100%" }}>
+        <IconButton
+          icon={item.saved === true ? "bookmark" : "bookmark-outline"}
+          color={theme.colors.primary}
+          style={{ position: "absolute", top: 0, left: 0, zIndex: 999 }}
+          size={30}
+          onPress={() => console.log("Pressed")}
+        />
         <View
           style={{
             width: "60%",
@@ -83,7 +98,8 @@ const CustomCard = ({ item, pageType }) => {
             width: "40%",
             height: "100%",
             display: "flex",
-            alignItems: "flex-end",
+            alignItems: "center",
+            justifyContent: "center",
             overflow: "hidden",
           }}
         >
@@ -91,9 +107,11 @@ const CustomCard = ({ item, pageType }) => {
           <Card.Content>
             {/* <Paragraph numberOfLines={7}>{item.body}</Paragraph> */}
             <Paragraph>Servings: {item.userId}</Paragraph>
+            <Divider style={{ marginVertical: 5 }} />
             <Paragraph>
               Time: {item.userId * Math.floor(Math.random() * 40)} Mins
             </Paragraph>
+            <Divider style={{ marginVertical: 5 }} />
           </Card.Content>
           <Card.Actions>{buttonOnType()}</Card.Actions>
         </View>
