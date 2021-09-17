@@ -54,7 +54,6 @@ const PantryScreen = () => {
 
 function BottomTab({ newTheme }) {
   const theme = useTheme();
-  console.log(theme.colors.primary);
   return (
     <NavigationContainer theme={newTheme}>
       <Tab.Navigator

@@ -17,7 +17,6 @@ const Test = () => {
 
 function TopBar() {
   const theme = useTheme();
-  console.log(theme);
   return (
     <Tab.Navigator
       initialRouteName="Cooking"

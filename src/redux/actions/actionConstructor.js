@@ -21,7 +21,10 @@ export const loadPost = () => {
       .get("https://jsonplaceholder.typicode.com/posts")
       .then((res) => {
         const posts = res.data;
-        dispatch(loadPostSuccess(posts));
+        let newPosts = posts.map((item) => {
+          return { ...item, saved: false };
+        });
+        dispatch(loadPostSuccess(newPosts));
       })
       .catch((err) => {
         const errMsg = err.message;
