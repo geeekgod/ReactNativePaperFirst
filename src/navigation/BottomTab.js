@@ -9,7 +9,14 @@ const Tab = createMaterialBottomTabNavigator();
 
 const SearchScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
+    <View
+      style={{
+        display: "flex",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Text>Settings Screen</Text>
     </View>
   );
@@ -17,7 +24,14 @@ const SearchScreen = () => {
 
 const FavouritesScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
+    <View
+      style={{
+        display: "flex",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Text>Favourites Screen</Text>
     </View>
   );
@@ -25,18 +39,26 @@ const FavouritesScreen = () => {
 
 const PantryScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
+    <View
+      style={{
+        display: "flex",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Text>Pantry Screen</Text>
     </View>
   );
 };
 
-function BottomTab() {
+function BottomTab({ newTheme }) {
   const theme = useTheme();
+  console.log(theme.colors.primary);
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={newTheme}>
       <Tab.Navigator
-        activeColor={theme.colors.primary}
+        activeColor={newTheme.colors.primary}
         initialRouteName="Voyage"
         barStyle={{
           backgroundColor: theme.colors.background,
