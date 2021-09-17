@@ -34,7 +34,7 @@ export const RootReducer = (state = initState, action) => {
           if (post.id === saveId) {
             return {
               ...post,
-              saved: true,
+              saved: !post.saved,
             };
           } else {
             return post;
