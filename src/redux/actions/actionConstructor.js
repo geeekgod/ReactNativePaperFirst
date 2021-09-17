@@ -22,7 +22,7 @@ export const loadPost = () => {
       .then((res) => {
         const posts = res.data;
         let newPosts = posts.map((item) => {
-          return { ...item, saved: true };
+          return { ...item, saved: false };
         });
         dispatch(loadPostSuccess(newPosts));
       })
@@ -59,5 +59,12 @@ export const loadImgAvatar = () => {
         const errMsg = err.message;
         dispatch(loadImgAvatarFailure(errMsg));
       });
+  };
+};
+
+export const addToSave = (id) => {
+  return {
+    type: actionTypes.ADD_TO_SAVE,
+    payload: id,
   };
 };

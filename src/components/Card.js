@@ -9,8 +9,10 @@ import {
   IconButton,
   Paragraph,
 } from "react-native-paper";
+import { connect } from "react-redux";
+import { addToSave } from "../redux/actions/actionConstructor";
 
-const CustomCard = ({ item, pageType }) => {
+const CustomCard = ({ item, pageType, addToSaveEvent }) => {
   const theme = useTheme();
   const navigation = useNavigation();
   const buttonOnType = () => {
@@ -72,7 +74,8 @@ const CustomCard = ({ item, pageType }) => {
           color={theme.colors.primary}
           style={{ position: "absolute", top: 0, left: 0, zIndex: 999 }}
           size={30}
-          onPress={() => console.log("Pressed")}
+          onPress={() => addToSaveEvent(parseInt(item.id))}
+          // onPress={() => console.log(item.id)}
         />
         <View
           style={{
@@ -119,4 +122,11 @@ const CustomCard = ({ item, pageType }) => {
     </Card>
   );
 };
-export default CustomCard;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToSaveEvent: (id) => dispatch(addToSave(id)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CustomCard);
