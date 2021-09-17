@@ -28,17 +28,18 @@ export const RootReducer = (state = initState, action) => {
 
     case actionTypes.ADD_TO_SAVE:
       let saveId = action.payload;
-      let newPost1 = state.posts.map((item) => {
-        if (
-          item.id === saveId &&
-          (item.saved === true || item.saved === false)
-        ) {
-          item.saved = !item.saved;
-        }
-      });
       return {
         ...state,
-        posts: newPost1,
+        posts: state.posts.map((post) => {
+          if (post.id === saveId) {
+            return {
+              ...post,
+              saved: true,
+            };
+          } else {
+            return post;
+          }
+        }),
       };
   }
 

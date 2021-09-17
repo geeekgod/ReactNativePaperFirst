@@ -22,7 +22,7 @@ export const loadPost = () => {
       .then((res) => {
         const posts = res.data;
         let newPosts = posts.map((item) => {
-          return { ...item, saved: true };
+          return { ...item, saved: false };
         });
         dispatch(loadPostSuccess(newPosts));
       })

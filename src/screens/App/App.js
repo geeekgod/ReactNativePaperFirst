@@ -68,7 +68,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
               }}
               data={state.posts}
               renderItem={renderPost}
-              keyExtractor={(item) => item.id.toString()}
+              keyExtractor={(item) => item.id}
               horizontal
             />
           )}
@@ -79,7 +79,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
               }}
               data={state.posts}
               renderItem={renderPost}
-              keyExtractor={(item) => item.id.toString()}
+              keyExtractor={(item) => item.id}
               horizontal
             />
           )}
