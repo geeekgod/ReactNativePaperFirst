@@ -12,6 +12,7 @@ const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
+    primary: "rgba(193, 12, 153, 1)",
   },
 };
 

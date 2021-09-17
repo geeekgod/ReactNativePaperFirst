@@ -13,14 +13,10 @@ const CustomCard = ({ item, pageType }) => {
             style={{
               marginTop: 10,
               borderRadius: 8,
-              elevation: 2, // display: "flex",
-              // maxWidth: "429px",
-              // height: "53px",
-              // width: "429px",
-              width: 130,
+              elevation: 2,
+              width: 120,
               borderRadius: 32,
               shadowOpacity: 5,
-              // boxShadow: "0px 4px 26px 0px rgba(0, 0, 0, 0.25)",
               backgroundColor: "rgba(193, 12, 153, 1)",
             }}
             mode="contained"
@@ -53,7 +49,7 @@ const CustomCard = ({ item, pageType }) => {
         margin: 15,
         borderWidth: 0,
         maxHeight: 290,
-        maxWidth: Dimensions.get("screen").width - 35,
+        maxWidth: Dimensions.get("screen").width - 25,
         elevation: 0,
         borderRadius: 20,
       }}
@@ -61,7 +57,7 @@ const CustomCard = ({ item, pageType }) => {
       <View style={{ display: "flex", flexDirection: "row", height: "100%" }}>
         <View
           style={{
-            width: "50%",
+            width: "60%",
             height: "100%",
             display: "flex",
             alignItems: "center",
@@ -80,7 +76,7 @@ const CustomCard = ({ item, pageType }) => {
         </View>
         <View
           style={{
-            width: "50%",
+            width: "40%",
             height: "100%",
             display: "flex",
             alignItems: "flex-end",
