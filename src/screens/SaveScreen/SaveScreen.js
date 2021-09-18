@@ -4,6 +4,7 @@ import { FlatList, ScrollView, StyleSheet, View } from "react-native";
 import { connect, useSelector } from "react-redux";
 import { loadPost } from "../../redux/actions/actionConstructor";
 import CustomCard from "../../components/Card";
+import { Title } from "react-native-paper";
 
 const SaveScreen = ({ userLoadPost }) => {
   const [postsLoaded, setPostsLoaded] = useState(false);
@@ -18,6 +19,7 @@ const SaveScreen = ({ userLoadPost }) => {
   if (postsLoaded) {
     return (
       <View style={styles.container}>
+        <Title>Favourites Posts</Title>
         <ScrollView>
           {state.posts && (
             <FlatList
@@ -27,7 +29,6 @@ const SaveScreen = ({ userLoadPost }) => {
               data={state.posts}
               renderItem={renderPost}
               keyExtractor={(item) => item.id}
-              horizontal
             />
           )}
         </ScrollView>
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 35,
   },
 });
 

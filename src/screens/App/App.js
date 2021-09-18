@@ -3,11 +3,9 @@ import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import {
-  Dimensions,
   FlatList,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from "react-native";
 import AppLoading from "expo-app-loading";
@@ -70,7 +68,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
               }}
               data={state.posts}
               renderItem={renderPost}
-              keyExtractor={(item) => item.id}
+              keyExtractor={(item) => item.id.toString()}
               horizontal
             />
           )}
@@ -81,7 +79,7 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
               }}
               data={state.posts}
               renderItem={renderPost}
-              keyExtractor={(item) => item.id}
+              keyExtractor={(item) => item.id.toString()}
               horizontal
             />
           )}

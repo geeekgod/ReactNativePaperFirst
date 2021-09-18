@@ -4,7 +4,7 @@ import CustomCard from "../../components/Card";
 
 const PostDetails = ({ route }) => {
   const item = route.params;
-  return <CustomCard item={item} pageType="details" />;
+  return <CustomCard item={item} pageType="details" bottomLoc="home" />;
 };
 
 export default PostDetails;
