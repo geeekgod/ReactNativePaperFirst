@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Appbar, Menu, Snackbar, useTheme } from "react-native-paper";
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Appbar, Menu, useTheme } from "react-native-paper";
+import { Dimensions, StyleSheet } from "react-native";
 import { useEffect } from "react";
-// import { useNavigation } from "@react-navigation/core";
 
 const AppBar = ({ navigation, route }) => {
   const [visible, setVisible] = React.useState(false);

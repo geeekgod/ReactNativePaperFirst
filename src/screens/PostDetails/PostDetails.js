@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/core";
 import * as React from "react";
 import CustomCard from "../../components/Card";
 

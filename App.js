@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import { applyMiddleware } from "redux";
 import { createStore } from "redux";
 import thunk from "redux-thunk";
-import MainStack from "./src/navigation/MainStack";
 import { RootReducer } from "./src/redux/reducers/rootReducer";
 import BottomTab from "./src/navigation/BottomTab";
 import { DefaultTheme as NavigationTheme } from "@react-navigation/native";
@@ -36,7 +35,6 @@ export default function Main() {
   return (
     <Provider store={store}>
       <PaperProvider theme={theme}>
-        {/* <MainStack /> */}
         <BottomTab newTheme={theme} />
       </PaperProvider>
     </Provider>

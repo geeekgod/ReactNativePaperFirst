@@ -1,6 +1,5 @@
 import { useNavigation } from "@react-navigation/core";
 import React, { useContext } from "react";
-import { useEffect } from "react";
 import { useState } from "react";
 import {
   FlatList,
