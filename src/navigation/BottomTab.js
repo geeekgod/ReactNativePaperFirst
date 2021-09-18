@@ -4,6 +4,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import MainStack from "./MainStack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import SaveScreen from "../screens/SaveScreen/SaveScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -91,7 +92,7 @@ function BottomTab({ newTheme }) {
             ),
           }}
           name="Favourites"
-          component={FavouritesScreen}
+          component={SaveScreen}
         />
 
         <Tab.Screen

@@ -79,7 +79,6 @@ const CustomCard = ({ item, pageType, addToSaveEvent, bottomLoc }) => {
               style={{ position: "absolute", top: 0, left: 0, zIndex: 999 }}
               size={30}
               onPress={() => addToSaveEvent(parseInt(item.id))}
-              // onPress={() => console.log(item.id)}
             />
             <View
               style={{
@@ -128,6 +127,78 @@ const CustomCard = ({ item, pageType, addToSaveEvent, bottomLoc }) => {
           </View>
         </Card>
       );
+
+    case "favourites":
+      if (item.saved === true) {
+        return (
+          <Card
+            style={{
+              padding: 10,
+              margin: 15,
+              borderWidth: 0,
+              maxHeight: 250,
+              maxWidth: Dimensions.get("screen").width - 25,
+              elevation: 0,
+              borderRadius: 20,
+            }}
+          >
+            <View
+              style={{ display: "flex", flexDirection: "row", height: "100%" }}
+            >
+              <IconButton
+                icon={item.saved === true ? "bookmark" : "bookmark-outline"}
+                color={theme.colors.primary}
+                style={{ position: "absolute", top: 0, left: 0, zIndex: 999 }}
+                size={30}
+                onPress={() => addToSaveEvent(parseInt(item.id))}
+              />
+              <View
+                style={{
+                  width: "60%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <Card.Cover
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    borderTopLeftRadius: 20,
+                    borderBottomLeftRadius: 20,
+                    marginVertical: "auto",
+                  }}
+                  source={{
+                    uri: "https://picsum.photos/seed/" + item.id + "/700",
+                  }}
+                />
+              </View>
+              <View
+                style={{
+                  width: "40%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  overflow: "hidden",
+                }}
+              >
+                <Card.Title title={item.title} numberOfLines={3} />
+                <Card.Content>
+                  <Paragraph>Servings: {item.userId}</Paragraph>
+                  <Divider style={{ marginVertical: 5 }} />
+                  <Paragraph>
+                    Time: {item.userId * Math.floor(Math.random() * 40)} Mins
+                  </Paragraph>
+                  <Divider style={{ marginVertical: 5 }} />
+                </Card.Content>
+              </View>
+            </View>
+          </Card>
+        );
+      } else {
+        return <View></View>;
+      }
   }
 };
 
