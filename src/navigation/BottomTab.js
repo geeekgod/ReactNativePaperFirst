@@ -7,7 +7,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 const Tab = createMaterialBottomTabNavigator();
 
-const SearchScreen = () => {
+const ExploreScreen = () => {
   return (
     <View
       style={{
@@ -17,7 +17,7 @@ const SearchScreen = () => {
         justifyContent: "center",
       }}
     >
-      <Text>Settings Screen</Text>
+      <Text>Explore Screen</Text>
     </View>
   );
 };
@@ -81,7 +81,7 @@ function BottomTab({ newTheme }) {
             ),
           }}
           name="Explore"
-          component={SearchScreen}
+          component={ExploreScreen}
         />
 
         <Tab.Screen

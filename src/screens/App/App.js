@@ -37,7 +37,9 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
   const state = useSelector((state) => {
     if (state) return state;
   });
-  const renderPost = ({ item }) => <CustomCard item={item} pageType="home" />;
+  const renderPost = ({ item }) => (
+    <CustomCard item={item} pageType="home" bottomLoc="home" />
+  );
   const renderAvtar = ({ item }) => (
     <View
       style={{
