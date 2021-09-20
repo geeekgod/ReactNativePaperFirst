@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, ScrollView, StyleSheet, View } from "react-native";
 import { connect, useSelector } from "react-redux";
 import { loadPost } from "../../redux/actions/actionConstructor";
@@ -10,9 +10,22 @@ const SaveScreen = ({ userLoadPost }) => {
     if (state) return state;
   });
 
+  const findSaves = () => {
+    const savedPost = state.posts.find((item) => {
+      if (item.saved === true) {
+        return item.id;
+      }
+    });
+    console.log(savedPost);
+  };
+
   const renderPost = ({ item }) => (
     <CustomCard item={item} pageType="home" bottomLoc="favourites" />
   );
+
+  useEffect(() =>{
+    findSaves()
+  })
   if (state.posts) {
     return (
       <View style={styles.container}>
