@@ -1,5 +1,4 @@
-import AppLoading from "expo-app-loading";
-import React, { useState } from "react";
+import React from "react";
 import { FlatList, ScrollView, StyleSheet, View } from "react-native";
 import { connect, useSelector } from "react-redux";
 import { loadPost } from "../../redux/actions/actionConstructor";
@@ -7,8 +6,6 @@ import CustomCard from "../../components/Card";
 import { Title } from "react-native-paper";
 
 const SaveScreen = ({ userLoadPost }) => {
-  const [postsLoaded, setPostsLoaded] = useState(false);
-
   const state = useSelector((state) => {
     if (state) return state;
   });
@@ -16,7 +13,7 @@ const SaveScreen = ({ userLoadPost }) => {
   const renderPost = ({ item }) => (
     <CustomCard item={item} pageType="home" bottomLoc="favourites" />
   );
-  if (postsLoaded) {
+  if (state.posts) {
     return (
       <View style={styles.container}>
         <Title>Favourites Posts</Title>
@@ -36,11 +33,10 @@ const SaveScreen = ({ userLoadPost }) => {
     );
   } else {
     return (
-      <AppLoading
-        startAsync={userLoadPost}
-        onFinish={() => setPostsLoaded(true)}
-        onError={console.warn}
-      />
+      <View style={styles.container}>
+        <Title>Favourites Posts</Title>
+        {userLoadPost()}
+      </View>
     );
   }
 };

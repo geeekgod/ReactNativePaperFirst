@@ -116,7 +116,8 @@ const CustomCard = ({ item, pageType, addToSaveEvent, bottomLoc }) => {
                 <Paragraph>Servings: {item.userId}</Paragraph>
                 <Divider style={{ marginVertical: 5 }} />
                 <Paragraph>
-                  Time: {item.userId * Math.floor(Math.random() * 40)} Mins
+                  {/* Time: {item.userId * Math.floor(Math.random() * 40)} Mins */}
+                  Time: {item.time} Mins
                 </Paragraph>
                 <Divider style={{ marginVertical: 5 }} />
               </Card.Content>

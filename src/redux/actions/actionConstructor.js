@@ -22,7 +22,11 @@ export const loadPost = () => {
       .then((res) => {
         const posts = res.data;
         let newPosts = posts.map((item) => {
-          return { ...item, saved: false };
+          return {
+            ...item,
+            saved: false,
+            time: item.userId * Math.floor(Math.random() * 40),
+          };
         });
         dispatch(loadPostSuccess(newPosts));
       })

@@ -6,14 +6,6 @@ import App from "../screens/App/App";
 
 const Tab = createMaterialTopTabNavigator();
 
-const Test = () => {
-  return (
-    <View>
-      <Text>Test Page</Text>
-    </View>
-  );
-};
-
 function TopBar() {
   const theme = useTheme();
   return (
