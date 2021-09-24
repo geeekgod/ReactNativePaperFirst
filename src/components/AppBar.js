@@ -31,7 +31,7 @@ const AppBar = ({ navigation, route }) => {
         anchor={
           <Appbar.Action
             icon="dots-vertical"
-            color="white"
+            color={theme.colors.text}
             onPress={openMenu}
             onDismiss={closeMenu}
           />
