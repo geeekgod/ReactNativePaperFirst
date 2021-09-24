@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, ScrollView, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { connect, useSelector } from "react-redux";
 import { loadPost } from "../../redux/actions/actionConstructor";
 import CustomCard from "../../components/Card";
@@ -33,20 +33,26 @@ const SaveScreen = ({ userLoadPost }) => {
   if (state.posts) {
     return (
       <View style={styles.container}>
-        {savePosts && state.posts && (
-          <FlatList
-            ListHeaderComponent={
-              <View style={styles.container}>
-                <Title>Favourites Posts</Title>
-              </View>
-            }
-            style={{
-              paddingVertical: 5,
-            }}
-            data={state.posts}
-            renderItem={renderPost}
-            keyExtractor={(item) => item.id.toString()}
-          />
+        {savePosts ? (
+          <View>
+            {savePosts && state.posts && (
+              <FlatList
+                ListHeaderComponent={
+                  <View style={styles.container}>
+                    <Title>Favourites Posts</Title>
+                  </View>
+                }
+                style={{
+                  paddingVertical: 5,
+                }}
+                data={state.posts}
+                renderItem={renderPost}
+                keyExtractor={(item) => item.id.toString()}
+              />
+            )}
+          </View>
+        ) : (
+          <Title style={{ flex: 1 }}>Favourites Posts</Title>
         )}
       </View>
     );
