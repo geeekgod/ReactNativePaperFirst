@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, ScrollView, StyleSheet, View } from "react-native";
 import { connect, useSelector } from "react-redux";
 import { loadPost } from "../../redux/actions/actionConstructor";
@@ -10,6 +10,7 @@ const SaveScreen = ({ userLoadPost }) => {
     if (state) return state;
   });
 
+  const [savePosts, setSavePosts] = useState(false);
   const findSaves = () => {
     const savedPost = state.posts.find((item) => {
       if (item.saved === true) {
@@ -17,31 +18,36 @@ const SaveScreen = ({ userLoadPost }) => {
       }
     });
     console.log(savedPost);
+    if (savedPost) {
+      setSavePosts(true);
+    }
   };
 
   const renderPost = ({ item }) => (
     <CustomCard item={item} pageType="home" bottomLoc="favourites" />
   );
 
-  useEffect(() =>{
-    findSaves()
-  })
+  useEffect(() => {
+    findSaves();
+  });
   if (state.posts) {
     return (
       <View style={styles.container}>
-        <Title>Favourites Posts</Title>
-        <ScrollView>
-          {state.posts && (
-            <FlatList
-              style={{
-                paddingVertical: 5,
-              }}
-              data={state.posts}
-              renderItem={renderPost}
-              keyExtractor={(item) => item.id}
-            />
-          )}
-        </ScrollView>
+        {savePosts && state.posts && (
+          <FlatList
+            ListHeaderComponent={
+              <View style={styles.container}>
+                <Title>Favourites Posts</Title>
+              </View>
+            }
+            style={{
+              paddingVertical: 5,
+            }}
+            data={state.posts}
+            renderItem={renderPost}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        )}
       </View>
     );
   } else {
