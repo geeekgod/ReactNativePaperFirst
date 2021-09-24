@@ -60,6 +60,7 @@ function BottomTab({ newTheme }) {
       <Tab.Navigator
         activeColor={newTheme.colors.primary}
         initialRouteName="Voyage"
+        labeled={false}
         barStyle={{
           backgroundColor: theme.colors.background,
           height: 55,
