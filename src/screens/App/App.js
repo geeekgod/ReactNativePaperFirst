@@ -1,12 +1,7 @@
 import { useNavigation } from "@react-navigation/core";
 import React, { useContext } from "react";
 import { useState } from "react";
-import {
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  View,
-} from "react-native";
+import { FlatList, ScrollView, StyleSheet, View } from "react-native";
 import AppLoading from "expo-app-loading";
 import CustomCard from "../../components/Card";
 import { connect, ReactReduxContext, useSelector } from "react-redux";
@@ -60,28 +55,45 @@ function App({ userLoadPost, userLoadImage, userPosts, userImgs }) {
     return (
       <View style={styles.container}>
         <ScrollView>
-          {state.posts && (
-            <FlatList
-              style={{
-                paddingVertical: 5,
-              }}
-              data={state.posts}
-              renderItem={renderPost}
-              keyExtractor={(item) => item.id.toString()}
-              horizontal
-            />
-          )}
-          {state.posts && (
-            <FlatList
-              style={{
-                paddingVertical: 5,
-              }}
-              data={state.posts}
-              renderItem={renderPost}
-              keyExtractor={(item) => item.id.toString()}
-              horizontal
-            />
-          )}
+          <View>
+            {state.posts && (
+              <FlatList
+                style={{
+                  paddingVertical: 5,
+                }}
+                data={state.posts}
+                renderItem={renderPost}
+                keyExtractor={(item) => item.id.toString()}
+                horizontal
+              />
+            )}
+          </View>
+          <View>
+            {state.posts && (
+              <FlatList
+                style={{
+                  paddingVertical: 5,
+                }}
+                data={state.posts}
+                renderItem={renderPost}
+                keyExtractor={(item) => item.id.toString()}
+                horizontal
+              />
+            )}
+          </View>
+          <View>
+            {state.posts && (
+              <FlatList
+                style={{
+                  paddingVertical: 5,
+                }}
+                data={state.posts}
+                renderItem={renderPost}
+                keyExtractor={(item) => item.id.toString()}
+                horizontal
+              />
+            )}
+          </View>
           {/* {userImgs && (
             <FlatList
               style={{
